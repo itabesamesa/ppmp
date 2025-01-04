@@ -1,0 +1,12 @@
+$file "image6.png"
+
+openimg file $img
+
+$c1 {0 0}
+$c2 {10 0}
+$c3 {10 10}
+$c4 {0 10}
+$poly {c1 c2 c3 c4}
+
+polygon_mask &img poly
+

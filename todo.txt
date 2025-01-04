@@ -1,0 +1,264 @@
+key
+	?   -   maybe
+	:)  -   would be fun
+	~   -   sorta completed
+	x   -   done!
+	):  -   baaahh
+	#   -   comments
+
+important?
+	fix indents!!! ): ): ):                         x
+	replace some int to longs
+		error with malloc in convolute_img -> select_subarray
+			malloc(): invalid size (unsorted)
+			==135697==    at 0x4849BF3: calloc (vg_replace_malloc.c:1675)
+	add color type to My_png                        x
+		type=RGB                                      x
+		display_type=RGB                              x
+	add consts/enums for My_png types (img, color, ...) ~
+	initialize My_png                               x
+		blur                                          x
+		display                                       x
+		edge_detect                                   x
+		filp                                          x
+		gui                                           x
+		mask                                          x
+		misc                                          x
+		my_math                                       x
+		noise                                         x
+		pngtopng                                      x
+		posterize                                     x
+		rotate                                        x
+		scale                                         x
+		skew                                          x
+	make colors return a My_png                     x
+	make define_vars return a defvarerr instead of changing one x
+	find out how to get alt_gr working with xlib/xkb
+		research xkb_common
+
+png
+	read png from file                              ~
+	write pngs from arrays                          x
+		print out X11 display?
+	custom chunks :)
+
+misc
+	subarray selection                              x
+		add buffer for offset selections              ~ #just use calloc
+			selection box center = 0,0                  x
+			image =                                     x
+				1 1 1                                     x
+				1 1 1                                     x
+				1 1 1                                     x
+			box selection size = 3x3                    x
+			selction =                                  x
+				0 0 0                                     x
+				0 1 1                                     x
+				0 1 1                                     x
+	mask
+		shape masks                                   x
+			circle                                      x
+			rectangle                                   x
+			regular polygon :)                          x #regular_polygon with polygon_mask
+			irregular polygon :)                        x
+		selection #all types
+	image convolution with custom matricies         x
+	drawing
+		box                                           ~ #use rectangle_mask
+		arc/circle
+		spline?
+		line
+		polygon                                       ~ #use polygon_mask
+		boolean opperators?
+	display                                         x
+		masks                                         x
+		images                                        x
+		differentiate betwean them?                   x #My_png has a type: 0=img, 1=mask, 2=kernel
+		move to separate file                         x
+	difference maps
+
+filters
+	styles
+		posterization                                 ~
+		edge detection                                ~
+		sobel                                         x
+		ridge edge                                    x
+		prewitt                                       x
+		kirsch                                        x
+		roberts cross                                 x
+		phase stretch transform?
+	image math
+		overlay
+		add
+		mix
+		...
+
+scale
+	box sample                                      ~ #creation of kernels is unsatisfactory #it broke?
+	linear interpolation                            x #donde?
+	bilinear interpolation                          ~ #alot better now
+	ai scale?
+
+select
+	by color #ALL THE COLORS!!!                     ~ #should work with color to color
+		whole image
+		within custom boundries
+		within bordes (recusive select)
+	add a condition function in the select function
+		select(..., int condition(img, x, y))
+		add a pixel at function
+
+skew                                              ~ #problem with padding?
+	horizontal                                      x
+	vertical                                        x
+
+rotate
+	with skew
+	with math                                       x
+
+blur
+	box sample                                      x
+	gaussian                                        ~
+	circle sample
+	add linear/custom gradient for * sample         ~ #possible with custom kernel and image convolution?
+
+colors
+	display alpha                                   x #yes but slooooooow #nvm fixed it
+	hsl/hsv/hsi
+	rgb                                             x
+	okLAB
+	CIELAB
+	lch
+	color to color converter
+
+noise
+	perlin noise                                    x
+	worley/vorronoi                                 x
+	simplex noise
+	literally just random values
+
+ai
+	communicate with ComfyUI
+		auto create simple workflows
+
+parser
+	neccessary space after variables in arrays      x
+		var } #works                                  x
+		var}  #doesn't work                           x
+	polygon doesn't work                            x
+
+fun
+	mandelbrot
+	gaussian boobs
+	read stls/off files :) #non ANSI stls
+		map image to face?
+	txt instructions parser :)                      ~
+		define imges to store #with $?                x
+			auto detect images that get used more than once? x
+		define variables #with $?                     x
+		auto free memory                              ~
+		operation options output\n #output is optional x
+		example:                                      x
+			apply_mask img1 mask1 img2                  x
+			box_sample img2 $scale                      x
+		put operations in a txt file where line number denotes case in a switch statment x
+			put amount of arguments after               x
+			example:                                    x
+				circle_mask 3                             x
+				apply_mask 2                              x
+				box_sample 2                              x
+		different indicator for generate_parser_txt   x
+			differentiat between                        x
+				My_png                                    x
+				void                                      x
+				...                                       x
+		add ALL functions!!!                          x
+
+design
+	terminal to do comands?
+	comand buttons?
+		add a txt file for setting commands
+			#like parser
+	proper window closing and programm termination
+	selection border
+	get correct window size                         x
+	i3wm-like window management for options and stuff ~
+		┌────╥────╥───┐
+		│File║Edit║...│
+		╞════╬════╩═══╡
+		│~~~~║~~~~~~~~│
+		│~~~~║~~~~~~~~│
+		│~~~~║~~~~~~~~│
+		│~~~~║~~~~~~~~│
+		│~~~~║~~~~~~~~│
+		└────╨────────┘
+		w0[
+			name: screen
+			size: 15X9
+			children: [
+				w0: [
+					name: edit_bar
+					size: 15X2.5
+					children: [
+						w0: [
+							name: file
+							size: 5.5X2.5
+							children: []
+						],
+						w1: [
+							name: edit
+							size: 5.5X2.5
+							children: []
+						],
+						w2: [
+							name: ...
+							size: 4X2.5
+							children: []
+						]
+				],
+				w1: [
+					name: display
+					size: 15X6.5
+					children: [
+						w0: [
+							name: image0
+							size: 5.5X6.5
+							children: []
+						],
+						w1: [
+							name: image1
+							size: 9.5X6.5
+							children: []
+						]
+					]
+				]
+			]
+		]
+		children is a object with amount of children and list of pointers to window objects
+
+		or store hirarchie of windows as index of the windows list
+			window=[w0, w1, w2] #list of window objects #0 is always screen
+			w0=[
+				name: screen
+				size: 15X9
+				children: [1, 2]
+			]
+			children_object=[
+				parent: 0
+				window: w1
+			]
+		windows drawn left to right
+			draw based on children order
+	combine my_pngs into one
+		precalc alpha with background
+		make a list of changed pixels
+			calc intersections of my_pngs to get size needed for malloc
+			pixel: [
+				x, y:
+				r, g, b:
+			]
+		two lists
+			pixel list
+				ifndef add index
+				else don't
+			ilst of pixel indecies (only changed pixels)

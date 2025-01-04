@@ -1,0 +1,44 @@
+$file "./image6.png"
+#$file2 '"4"'   #ignores "
+
+#$empty_var  #throws error :)
+
+#this is a comment!!!
+
+$num 98
+
+$c1 {0 0}
+$c2 {100 0}
+$c3 {0 100}
+$c4 {"holla" "mundo"}
+
+$poly {c1 c2 {100 50} {75 75} c3}
+
+polygon_mask poly 1 $poly_mask_img
+
+#$array {30 30 4}#  j #extra characters are ignored #ignores double comments
+
+#$nested_array {{0 0} {100 0} {0 100}}
+
+#this_function_doesnt_exist 90 50 "asgdsaga"
+
+#openimg this_var_doesnt_exist
+
+#openimg "./'img 7.png'" $img3
+
+openimg file $img  #holla
+#rotate_90    &img #hi
+#$angle       0.15#ho
+#rotate_rotation_matrix &img angle
+
+#circle_mask {100 100 4} 25 {50 50} $img2
+
+#apply_mask img &img2 {100 100 4} 0
+
+edge_detect_kirsch_color &img
+
+move_img &img {50 50}
+
+blend_multply poly_mask_img img $img2
+
+#display_all img img2

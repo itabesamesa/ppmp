@@ -1,0 +1,27 @@
+$file "./image6.png"
+#$file2 '"4"'   #ignores "
+
+#$empty_var  #throws error :)
+
+#this is a comment!!!
+
+$num 98
+
+$array {30 30 4}#  j #extra characters are ignored #ignores double comments
+
+#this_function_doesnt_exist 90 50 "asgdsaga"
+
+#openimg this_var_doesnt_exist
+
+#openimg "./'img 7.png'" $img3
+
+openimg file $img  #holla
+#rotate_90    &img #hi
+$angle       0.15#ho
+rotate_rotation_matrix &img angle
+
+circle_mask {100 100 4} 25 {50 50} $img2
+
+apply_mask img &img2 {100 100 4} 0
+
+#display_all img img2

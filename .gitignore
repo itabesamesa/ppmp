@@ -1,0 +1,12 @@
+utils/old/out.txt
+*.out
+*.o
+utils/stl/ball1.stl
+utils/old
+vgcore.*
+img*
+*.bmp
+old/
+heximage6.txt
+imagebackup.png
+
