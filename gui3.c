@@ -196,7 +196,7 @@ int main(int argc, char** argv) {
 	My_png hsltorgb = img_HSL_to_RGB(rgbtohsl);
 
 	subselectionthing.offset = (xy){-50, -50};
-	My_png scaletioned = blend_multply(hsltorgb, subselection);
+	My_png scaletioned = blend_multply(hsltorgb, subselectionthing);
 	print_My_png(scaletioned);
 
 	xyz_int img_size = subselectionthing.size;
